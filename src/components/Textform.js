@@ -1,40 +1,44 @@
-import React,{useState} from 'react'
+import React,{useState, useMemo} from 'react'
 
 
 
 export default function Textform(props) {
     const handleUpClick = ()=>{
-        console.log("Uppercase was clicked" +  text);
         let newText = text.toUpperCase();
         setText(newText)
         props.showAlert("converted to Uppercase!", "success");
     }
 
     const handleLowClick = ()=>{
-        console.log("Lowercase was clicked" +  text);
         let newText = text.toLowerCase();
         setText(newText)
         props.showAlert("converted to Lowerercase!", "success");
     }
     const handleCopy = ()=>{
-        var text = document.getElementById("myBox")
-        text.select();
-        navigator.clipboard.writeText(text.value);
+        navigator.clipboard.writeText(text);
         props.showAlert("Copied to Clipboard!", "success");
     }
     const handleClearClick = ()=>{
-        console.log("Lowercase was clicked" +  text);
         let newText = '';
         setText(newText)
         props.showAlert("Your Text has been Cleared!", "success");
     }
  
     const handleOnChange = (event)=>{
-        console.log("On change");
-        setText(event.target.value  )
+        setText(event.target.value)
     }
 
-    const [text, setText] = useState('Enter text here..');
+    const [text, setText] = useState('');
+
+    const wordCount = useMemo(() => {
+        const trimmed = text.trim();
+        if (trimmed.length === 0) return 0;
+        return trimmed.split(/\s+/).length;
+    }, [text]);
+
+    const charCount = text.length;
+    const minutesRead = useMemo(() => 0.008 * wordCount, [wordCount]);
+
     return (
     <>
     <div className= "container" style={{color: props.mode==='dark'?'white':'#042743'}}>
@@ -49,8 +53,8 @@ export default function Textform(props) {
    </div>
    <div className= "container my-3" style={{color: props.mode==='dark'?'white':'#042743'}}>
         <h2>Your Text Summary</h2>
-        <p>{text.split(" ").length} words and {text.length} characters</p>
-        <p>{0.008 * text.split(" ").length} Minutes read</p>
+        <p>{wordCount} words and {charCount} characters</p>
+        <p>{minutesRead} Minutes read</p>
         <h3>Preview</h3>
         <p>{text}</p>
 
