@@ -4,11 +4,13 @@
 import './App.css';
 
 import Navbar from './components/Navbar';
-//import About from './components/About';
 import Textform from './components/Textform';
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Alert from './components/Alert';
 
+// Lazy-loaded component for code splitting
+const About = lazy(() => import('./components/About'));
 
 
 function App() {
@@ -38,20 +40,21 @@ const toggleMode = ()=>{
   }
 }
 return (
-<>
+  <Router>
+    <Navbar title="Textutils" mode={mode} toggleMode={toggleMode} />
+    <Alert alert={alert} />
 
-<Navbar title="Textutils" mode = {mode} toggleMode={toggleMode} />
-<Alert alert={alert}/>
-<div className= "container my-3">
-
-
-{/* <About/> */}
-<Textform showAlert={showAlert} heading = "Enter the text to analyze" />
-</div>
-
-</>
-        
-  );
+    {/* suspense fallback keeps bundle size small & UX acceptable */}
+    <Suspense fallback={<div className="text-center my-5">Loading...</div>}>
+      <div className="container my-3">
+        <Routes>
+          <Route path="/" element={<Textform showAlert={showAlert} heading="Enter the text to analyze" mode={mode} />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </div>
+    </Suspense>
+  </Router>
+);
 }
  
 export default App;

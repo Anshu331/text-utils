@@ -1,17 +1,15 @@
-import React,{useState} from 'react'
+import React,{useState, useMemo} from 'react'
 
 
 
 export default function Textform(props) {
     const handleUpClick = ()=>{
-        console.log("Uppercase was clicked" +  text);
         let newText = text.toUpperCase();
         setText(newText)
         props.showAlert("converted to Uppercase!", "success");
     }
 
     const handleLowClick = ()=>{
-        console.log("Lowercase was clicked" +  text);
         let newText = text.toLowerCase();
         setText(newText)
         props.showAlert("converted to Lowerercase!", "success");
@@ -23,18 +21,28 @@ export default function Textform(props) {
         props.showAlert("Copied to Clipboard!", "success");
     }
     const handleClearClick = ()=>{
-        console.log("Lowercase was clicked" +  text);
         let newText = '';
         setText(newText)
         props.showAlert("Your Text has been Cleared!", "success");
     }
  
     const handleOnChange = (event)=>{
-        console.log("On change");
         setText(event.target.value  )
     }
 
-    const [text, setText] = useState('Enter text here..');
+    const [text, setText] = useState('');
+
+    // Derived memoized values to avoid expensive recalculations on every render
+    const { wordCount, charCount, readingTime } = useMemo(() => {
+      const words = text.trim().split(/\s+/).filter(Boolean);
+      const countWords = words.length;
+      const countChars = text.length;
+      return {
+        wordCount: countWords,
+        charCount: countChars,
+        readingTime: +(0.008 * countWords).toFixed(2),
+      };
+    }, [text]);
     return (
     <>
     <div className= "container" style={{color: props.mode==='dark'?'white':'#042743'}}>
@@ -49,8 +57,8 @@ export default function Textform(props) {
    </div>
    <div className= "container my-3" style={{color: props.mode==='dark'?'white':'#042743'}}>
         <h2>Your Text Summary</h2>
-        <p>{text.split(" ").length} words and {text.length} characters</p>
-        <p>{0.008 * text.split(" ").length} Minutes read</p>
+        <p>{wordCount} words and {charCount} characters</p>
+        <p>{readingTime} Minutes read</p>
         <h3>Preview</h3>
         <p>{text}</p>
 
