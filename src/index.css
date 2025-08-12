@@ -1,0 +1,26 @@
+:root {
+  --Background: #FAF7FF;
+  --Text-secondary: #F6EEFF;
+  --Primary-Color: #6C3B9F;
+}
+
+/* Keep global styles minimal to avoid affecting current functionality */
+.poppins-font {
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Layout wrapper for the newly added section */
+.live-rooms-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+@media (max-width: 992px) {
+  .live-rooms-layout {
+    gap: 16px;
+  }
+}

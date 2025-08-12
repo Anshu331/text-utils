@@ -8,6 +8,8 @@ import Navbar from './components/Navbar';
 import Textform from './components/Textform';
 import { useState } from 'react';
 import Alert from './components/Alert';
+import LiveRooms from './components/LiveRooms';
+import Suggestions from './components/Suggestions';
 
 
 
@@ -47,6 +49,10 @@ return (
 
 {/* <About/> */}
 <Textform showAlert={showAlert} heading = "Enter the text to analyze" />
+<div className="live-rooms-layout">
+  <LiveRooms />
+  <Suggestions />
+</div>
 </div>
 
 </>
