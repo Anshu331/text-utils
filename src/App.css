@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+/*
+  Global CSS variables used by new LiveRooms component. These variables are
+  scoped to :root so they are safe for the existing components which do not
+  reference them.
+*/
+:root {
+  --Background: #FAF7FF;
+  --Text-secondary: #F6EEFF;
+  --Primary-Color: #6C3B9F;
+}
+
+/* Basic reset tweaks (no visual changes to current app) */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
