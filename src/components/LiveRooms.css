@@ -1,0 +1,131 @@
+.live-rooms {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Outer frame: width 650, height 858, border-radius 4, background var(--Background) */
+.live-rooms__frame {
+  background: var(--Background, #FAF7FF);
+  width: 650px;
+  max-width: 100%;
+  height: 858px;
+  border-radius: 4px;
+  position: relative;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* Header elements */
+.live-rooms__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Black badge: 168x41, padding 10 */
+.live-rooms__handle-badge {
+  background: #000000;
+  color: #ffffff;
+  width: 168px;
+  height: 41px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 14px; /* matches spec */
+  line-height: 100%;
+}
+
+/* Chip: radius 99, border 1px #F6EEFF, bg #6C3B9F1A, gap 4 */
+.live-rooms__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px;
+  border-radius: 99px;
+  border: 1px solid var(--Text-secondary, #F6EEFF);
+  background: rgba(108, 59, 159, 0.1); /* #6C3B9F1A */
+}
+
+.live-rooms__chip-icon {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--Primary-Color, #6C3B9F);
+}
+
+.live-rooms__chip-text {
+  color: var(--Text-secondary, #F6EEFF);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 100%;
+}
+
+/* Content area */
+.live-rooms__content {
+  position: relative;
+  margin-top: 16px;
+  height: calc(100% - 57px);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Preview placeholder */
+.live-rooms__preview {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #C8BEDD 0%, #6C3B9F 100%);
+  opacity: 0.9;
+}
+
+/* Overlay card: 279x228, black bg, placed near bottom-right (responsive) */
+.live-rooms__overlay-card {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  width: 279px;
+  max-width: calc(100% - 48px);
+  height: 228px;
+  background: #000000;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.live-rooms__overlay-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--Text-secondary, #F6EEFF);
+}
+
+.live-rooms__overlay-dot {
+  width: 19px;
+  height: 15px;
+  background: var(--Text-secondary, #F6EEFF);
+  border-radius: 4px;
+}
+
+.live-rooms__overlay-text {
+  color: var(--Text-secondary, #F6EEFF);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .live-rooms__frame {
+    height: auto;
+    min-height: 480px;
+  }
+  .live-rooms__overlay-card {
+    position: static;
+    margin: 16px auto 0;
+    width: 90%;
+    height: 160px;
+  }
+}
