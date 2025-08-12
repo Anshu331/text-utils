@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+.liveRoomsWrapper {
+  width: 100%;
+  max-width: 650px;
+  /* Maintain aspect ratio of 650x858 */
+  aspect-ratio: 650 / 858;
+  position: relative;
+}
+
+.canvas {
+  width: 650px;
+  height: 858px;
+  position: absolute;
+  inset: 0;
+  /* Center the canvas and scale responsively */
+  transform-origin: top left;
+}
+
+/* Use a scale so the absolute layout matches exactly but is responsive */
+.liveRoomsWrapper {
+  --base-width: 650;
+}
+
+.liveRoomsWrapper > .canvas {
+  /* scale to fit container width */
+  transform: scale(calc(100% / 650));
+}
+
+
+/* Black card */
+.cardBlack {
+  position: absolute;
+  width: 279px;
+  height: 228px;
+  top: 560px;
+  left: 335px;
+  border-radius: 12px;
+  background: #000000;
+  opacity: 1;
+}
+
+/* Button-like block */
+.primaryButton {
+  position: absolute;
+  width: 168px;
+  height: 41px;
+  top: 187px;
+  left: 55px;
+  padding: 10px;
+  gap: 10px;
+  border-radius: 12px;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.handle {
+  position: absolute;
+  width: 148px;
+  height: 21px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  top: 187px;
+  left: 55px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Badge pill */
+.badgePill {
+  position: absolute;
+  width: 61px;
+  height: 21px;
+  top: 12px;
+  left: 16px;
+  border-radius: 99px;
+  padding: 10px;
+  gap: 4px;
+  border-width: 1px;
+  border: 1px solid #F6EEFF;
+  background: #6C3B9F1A;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--Text-secondary, #F6EEFF);
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.badgeDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--Text-secondary, #F6EEFF);
+}
+
+/* Check icon container (approximate sizes per spec) */
+.checkIcon {
+  width: 19px;
+  height: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkIcon svg {
+  width: 9.1666669846px;
+  height: 6.25px;
+}
+
+/* Container background for entire live room area to show contrast */
+.rootBg {
+  position: absolute;
+  width: 650px;
+  height: 858px;
+  top: 0;
+  left: 0;
+  background: var(--Background, #FAF7FF);
+  border-radius: 4px;
+}
