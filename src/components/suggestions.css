@@ -1,0 +1,202 @@
+/* Suggestions panel styles per provided properties; responsive */
+
+.suggestions {
+  display: flex;
+  justify-content: center;
+  padding: 16px 8px;
+}
+
+.suggestions__panel {
+  width: 254px;
+  max-width: 100%;
+  height: 858px;
+  border-radius: 8px;
+  background: var(--Background, #FAF7FF);
+  position: relative;
+}
+
+.suggestions__scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  padding: 12px;
+}
+
+/* Default block */
+.suggestions__block[data-variant="default"] {
+  position: relative;
+  height: 364px;
+}
+
+.suggestions__divider {
+  width: 205px;
+  height: 0px;
+  border-top: 1px solid var(--Text-secondary, #F6EEFF);
+  margin: 24px auto;
+}
+
+.suggestions__divider.short {
+  width: 75px;
+  margin-top: 629px; /* as provided, but this will be ignored on small screens */
+}
+
+/* Carousel variant */
+.suggestions__carousel[data-variant="1"] {
+  width: 241px;
+  height: 364px;
+  margin: 38px auto 0;
+}
+
+.suggestions__carousel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 18px;
+  margin-top: 149px; /* space from top to position at ~167px from top considering margins */
+}
+
+.suggestions__nav {
+  width: 18px;
+  height: 18px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.suggestions__nav.prev .suggestions__nav-icon,
+.suggestions__nav.next .suggestions__nav-icon {
+  display: inline-block;
+  width: 14.625px;
+  height: 14.625px;
+  background: #C8BEDD;
+  border-radius: 50%;
+}
+
+.suggestions__nav.next .suggestions__nav-icon.primary {
+  background: var(--Primary-Color, #6C3B9F);
+}
+
+.suggestions__cards {
+  width: 222px;
+  height: 351px;
+  margin: 8px auto 0;
+}
+
+.suggestions__card {
+  width: 222px;
+  height: 111px;
+  border-radius: 6px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.2) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.suggestions__card-top {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  height: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.suggestions__card-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 14px;
+  background: #00000033;
+}
+
+.suggestions__card-chip-dot {
+  width: 12px;
+  height: 12px;
+  background: #0B9A6B;
+  border: 1px solid var(--Text-secondary, #F6EEFF);
+  border-radius: 50%;
+}
+
+.suggestions__card-chip-label {
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 1;
+  color: var(--Text-secondary, #F6EEFF);
+}
+
+.suggestions__card-meter {
+  width: 18px;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.suggestions__card-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 43px;
+  background: #00000033;
+  display: grid;
+  grid-template-columns: 69px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 4px 8px;
+}
+
+.suggestions__card-title {
+  width: 105px;
+  height: 18px;
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--Text-secondary, #F6EEFF);
+}
+
+.suggestions__card-subtitle {
+  width: 105px;
+  height: 14px;
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  font-size: 9px;
+  line-height: 1;
+  color: var(--Text-secondary, #F6EEFF);
+}
+
+.suggestions__card-avatar {
+  width: 69px;
+  height: 69px;
+  background: #D9D9D9;
+  border: 1px solid var(--Background, #FAF7FF);
+  border-radius: 6px;
+  position: absolute;
+  top: 21px;
+  left: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .suggestions__panel {
+    width: min(254px, 92vw);
+    height: auto;
+    min-height: 480px;
+  }
+  .suggestions__scroll {
+    position: static;
+  }
+  .suggestions__divider,
+  .suggestions__divider.short {
+    margin: 16px auto;
+  }
+  .suggestions__carousel[data-variant="1"] {
+    width: 100%;
+    max-width: 241px;
+    height: auto;
+  }
+}

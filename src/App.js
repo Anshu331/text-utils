@@ -8,6 +8,8 @@ import Navbar from './components/Navbar';
 import Textform from './components/Textform';
 import { useState } from 'react';
 import Alert from './components/Alert';
+import LiveRooms from './components/LiveRooms';
+import Suggestions from './components/Suggestions';
 
 
 
@@ -43,11 +45,13 @@ return (
 <Navbar title="Textutils" mode = {mode} toggleMode={toggleMode} />
 <Alert alert={alert}/>
 <div className= "container my-3">
-
-
-{/* <About/> */}
-<Textform showAlert={showAlert} heading = "Enter the text to analyze" />
-</div>
+ 
+ 
+ {/* <About/> */}
+ <Textform showAlert={showAlert} heading = "Enter the text to analyze" />
+ <LiveRooms />
+ <Suggestions />
+ </div>
 
 </>
         
