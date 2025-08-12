@@ -6,8 +6,10 @@ import './App.css';
 import Navbar from './components/Navbar';
 //import About from './components/About';
 import Textform from './components/Textform';
+import LiveRooms from './components/LiveRooms';
 import { useState } from 'react';
 import Alert from './components/Alert';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 
@@ -38,18 +40,21 @@ const toggleMode = ()=>{
   }
 }
 return (
-<>
+<Router>
 
 <Navbar title="Textutils" mode = {mode} toggleMode={toggleMode} />
 <Alert alert={alert}/>
 <div className= "container my-3">
 
+<Routes>
+  <Route path="/" element={<Textform showAlert={showAlert} heading = "Enter the text to analyze" />} />
+  <Route path="/live-rooms" element={<LiveRooms />} />
+</Routes>
 
 {/* <About/> */}
-<Textform showAlert={showAlert} heading = "Enter the text to analyze" />
 </div>
 
-</>
+</Router>
         
   );
 }
